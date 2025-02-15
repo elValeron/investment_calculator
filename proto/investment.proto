@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package order;
+
+message CustomErrorDetail {
+    string reason = 1;
+    string field = 2;
+}
+
+message Payment {
+    int32 paymentNumber = 1;
+    double paymentAmount = 2;
+}
+message InvestmentResult {
+    string investorName = 1;
+    double totalInvestmentAmount = 2;
+    repeated Payment paymentSchedule = 3;
+
+}
+message InvestmentRequest {
+    string investorFullName = 1;
+    int64 initialDeposit = 2;
+    double interestRate = 3;
+    int32 investmentPeriod = 4;
+    string compoundFrequency = 5;
+}
+
+message CustomFieldError {
+    repeated CustomErrorDetail error = 1;
+}
+
+message InvestmentResponse {
+    oneof result {
+        InvestmentResult investmentResult = 1;
+        CustomFieldError errorDetail = 2;
+    }    
+}
+
+service Investment {
+    rpc CreateInvestment (InvestmentRequest) returns (InvestmentResponse);
+}
+

@@ -1,0 +1,1 @@
+from .crud import investment_journal # noqa

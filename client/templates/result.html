@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="limiter">
+    <div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+        <div class="wrap-login100 p-l-30 p-r-45 p-t-45 p-b-34">
+            <h2 class="login100-form-title p-b-49">Инвестиционный калькулятор</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Имя пользователя</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ context.investmentResult.investorName }}</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td> <!-- Пустая строка -->
+                    </tr>
+                    <tr>
+                        <th>Номер платежа</th>
+                        <th>Сумма платежа</th>
+                    </tr>
+                    {% for text in context.investmentResult.paymentSchedule %}
+                    <tr>
+                        <td>{{ text.paymentNumber }}</td>
+                        <td>{{ text.paymentAmount }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="final-result">
+                <h3>Финальная сумма инвестиций: {{ context.investmentResult.totalInvestmentAmount }}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

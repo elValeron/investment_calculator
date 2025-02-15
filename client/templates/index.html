@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('/static/images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-30 p-r-45 p-t-45 p-b-34">
+				<form class="login100-form" method="POST" novalidate>
+					{{ form.csrf_token }}
+					<span class="login100-form-title p-b-49">
+						Инвестиционный калькулятор
+					</span>
+					{% for field in form %}
+					<div class="wrap-input100 validate-input m-b-20">
+						{{ field(class="input100 text-center", placeholder=field.label.text) }}
+						{% with messages = get_flashed_messages() %}
+							{% for message in messages %}
+							{% if message[1] == field.name %}
+						<span class="label-input100 alert-validate" for="{{ message.field }}">{{ message[0] }}</span>	
+						{% endif %}
+						{% endfor %}
+						{% endwith %}
+					</div>
+					{% endfor %}
+				</div>
+				<div>
+
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

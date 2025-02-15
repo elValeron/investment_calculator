@@ -1,0 +1,7 @@
+POSTGRES_USER=Логин для подключения к бд
+POSTGRES_PASSWORD= Пароль пользователя БД
+POSTGRES_DB=Имя БД
+DB_HOST= хост БД
+DB_PORT=порт БД
+SERVER_PORT=<порт сервера, используется в клиенте и сервере>
+SECRET_KEY=Ключ для приложения Flask
